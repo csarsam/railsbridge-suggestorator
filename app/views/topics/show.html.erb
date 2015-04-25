@@ -1,14 +1,29 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
-</p>
+<div class="container">
+  <div class="row">
 
-<p>
-  <strong>Description:</strong>
-  <%= @topic.description %>
-</p>
+    <h1 class="topics-header">View Topic</h1>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+    <div class="topics-list col-md-6 col-md-offset-3">
+      <p id="notice"><%= notice %></p>
+
+      <p>
+        <strong>Title:</strong>
+        <%= @topic.title %>
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= @topic.description %>
+      </p>
+
+      <p>
+        <strong>Score:</strong>
+        <%= @topic.votes.count %>
+      </p>
+
+      <%= link_to 'Edit', edit_topic_path(@topic) %> |
+      <%= link_to 'Back', topics_path %>
+    </div>
+  </div>
+</div>

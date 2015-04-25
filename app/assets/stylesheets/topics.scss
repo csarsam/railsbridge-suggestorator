@@ -1,3 +1,124 @@
 // Place all the styles related to the topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$teal: #507470;
+$beige: #DCAE8A;
+$peach: #FC644D;
+$orange: #FF9B5F;
+$navy: #283045;
+
+$skyblue: #4EE5FC;
+
+body {
+  background-color: lighten($teal, 40%);
+}
+
+.score {
+  color: lighten(black, 50%);
+  font-weight: light;
+  display: inline-block;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.topics-header {
+  text-align: center;
+  color: $navy;
+  font-weight: bold;
+}
+
+.topics-list {
+  background-color: white;
+  padding: 30px;
+
+  .topic-title {
+    font-size: 20px;
+    line-height: 1;
+    color: lighten(black, 10%);
+    &:hover {
+      background-color: transparent;
+      text-decoration: none;
+    }
+  }
+
+  .remove-topic {
+    padding: 10px;
+    i {
+      color: white;
+    }
+  }
+
+  .topic-row:hover {
+    .remove-topic i {
+      color: $orange;
+    }
+    .topic-title {
+      color: lighten(teal, 10%);
+    }
+  }
+
+  .add-topic, .new_topic input[type="submit"], .edit_topic input[type="submit"]  {
+    border: none;
+    display: inline-block;
+    background-color: lighten($peach, 5%);
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: bold;
+
+    &:hover {
+      background-color: $peach;
+    }
+  }
+}
+
+.arrow-up {
+  display: block;
+  padding: 0;
+  background-color: transparent;
+  border-top-color: transparent;
+
+  margin-top: -15px;
+
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  
+  border-bottom: 10px solid lighten($navy, 20%);
+
+  &:hover {
+    border-bottom-color: $orange;
+  }
+
+  &:active {
+    border-bottom-color: darken($orange, 10%);
+  }
+}
+
+.arrow-down {
+  display: block;
+  padding: 0;
+  background-color: transparent;
+  border-bottom-color: transparent;
+
+  margin-left: -20px;
+  margin-top: 20px;
+
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  
+  border-top: 10px solid lighten($navy, 20%);
+
+  &:hover {
+    border-top-color: saturate(lighten($teal, 10%), 40%);
+  }
+
+  &:active {
+    border-top-color: saturate(lighten($teal, 10%), 20%);
+  }
+}

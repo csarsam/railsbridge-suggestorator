@@ -1,29 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
 
-<h1>Listing Topics</h1>
+    <h1 class="topics-header">Topics</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="topics-list col-md-10 col-md-offset-1">
+      <p id="notice"><%= notice %></p>
 
-  <tbody>
-    <% @topics.each do |topic| %>
-      <tr>
-        <td><%= link_to topic.title, topic %></td>
-        <td><%= pluralize(topic.votes.count, "vote") %></td>
-        <td><%= button_to '+1', upvote_topic_path(topic), method: :post %></td>
-        <td><%= button_to '-1', downvote_topic_path(topic), method: :post %></td>
-        <td><%= link_to 'Delete', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<br>
+        <tbody>
+          <% @topics.each do |topic| %>
+            <tr class='topic-row'>
+              <td><div class="arrow-up" id="<%= topic.id %>" /></td>
+              <td><div class="arrow-down" id="<%= topic.id %>" /></td>
+              <td class="score"><%= topic.votes.count %></td>
+              <td><%= link_to topic.title, topic, :class => "topic-title"%></td>
+              <td class="remove-topic">
+                <%= link_to topic, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="glyphicon glyphicon-remove"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-<%= link_to 'New Topic', new_topic_path %>
+      <br>
+
+      <%= link_to '+ Topic', new_topic_path, :class => 'add-topic' %>
+    </div>
+  </div>
+</div>

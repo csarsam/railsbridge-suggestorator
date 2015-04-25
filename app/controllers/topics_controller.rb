@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    @topics = Topic.all.sort { |a, b| b.votes.count <=> a.votes.count }
   end
 
   # GET /topics/1
@@ -64,13 +64,17 @@ class TopicsController < ApplicationController
   def upvote
     @topic = Topic.find(params[:id])
     @topic.votes.create
-    redirect_to(topics_path)
+    respond_to do |format|
+      format.json { render :json => @topic.votes.count }
+    end
   end
 
   def downvote
     @topic = Topic.find(params[:id])
     @topic.votes.first.destroy
-    redirect_to(topics_path)
+    respond_to do |format|
+      format.json { render :json => @topic.votes.count }
+    end
   end
 
   private
